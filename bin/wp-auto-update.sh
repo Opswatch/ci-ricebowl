@@ -18,22 +18,22 @@ terminus multidev:create $SITE_UUID.live $TERMINUS_ENV
 
 # check for upstream updates
 echo -e "\nChecking for upstream updates on the ${TERMINUS_ENV} multidev..."
-php -f bin/slack_notify.php wordpress_updates
+php -f bin/slack_notify.php drupal_updates
 UPSTREAM_UPDATES="$(terminus upstream:updates:list $SITE_UUID.$TERMINUS_ENV  --format=yaml)"
 
 if [[ ${UPSTREAM_UPDATES} == "{  }" ]]
 then
     # no upstream updates available
     echo -e "\nNo upstream updates found on the ${TERMINUS_ENV} multidev..."
-    php -f bin/slack_notify.php wordpress_no_coreupdates
+    php -f bin/slack_notify.php drupal_no_coreupdates
 else
     # making sure the multidev is in git mode
     echo -e "\nSetting the ${TERMINUS_ENV} multidev to git mode"
     terminus connection:set $SITE_UUID.$TERMINUS_ENV git
 
-    # apply Wordpress upstream updates
+    # apply Drupal upstream updates
     echo -e "\nApplying upstream updates on the ${TERMINUS_ENV} multidev..."
-    php -f bin/slack_notify.php wordpress_coreupdates
+    php -f bin/slack_notify.php drupal_coreupdates
     php -f bin/slack_notify.php terminus_coreupdates
     terminus upstream:updates:apply $SITE_UUID.$TERMINUS_ENV --yes --updatedb --accept-upstream
     UPDATES_APPLIED=true
@@ -46,19 +46,19 @@ terminus connection:set $SITE_UUID.$TERMINUS_ENV sftp
 # waking the site
 terminus env:wake -n $SITE_UUID.$TERMINUS_ENV
 
-# check for Wordpress plugin updates
-echo -e "\nChecking for Wordpress plugin updates on the ${TERMINUS_ENV} multidev..."
+# check for Drupal plugin updates
+echo -e "\nChecking for Drupal plugin updates on the ${TERMINUS_ENV} multidev..."
 PLUGIN_UPDATES="$(terminus wp $SITE_UUID.$TERMINUS_ENV -- plugin update --dry-run --all --format=summary)"
 
 if [[ ${PLUGIN_UPDATES} == "No plugin updates available." ]]
 then
-    # no Wordpress plugin updates found
-    echo -e "\nNo Wordpress plugin updates found on the ${TERMINUS_ENV} multidev..."
-    php -f bin/slack_notify.php wordpress_no_pluginupdates
+    # no Drupal module updates found
+    echo -e "\nNo Drupal module updates found on the ${TERMINUS_ENV} multidev..."
+    php -f bin/slack_notify.php drupal_no_moduleupdates
 else
-    # update Wordpress plugins
-    echo -e "\nUpdating Wordpress plugins on the ${TERMINUS_ENV} multidev..."
-    php -f bin/slack_notify.php wordpress_pluginupdates ${PLUGIN_UPDATES}
+    # update Drupal modules
+    echo -e "\nUpdating Drupal modules on the ${TERMINUS_ENV} multidev..."
+    php -f bin/slack_notify.php drupal_moduleupdates ${PLUGIN_UPDATES}
     php -f bin/slack_notify.php terminus_pluginupdates
     terminus wp $SITE_UUID.$TERMINUS_ENV -- plugin update --all
 
@@ -66,9 +66,9 @@ else
     echo -e "\nWaking the ${TERMINUS_ENV} multidev..."
     terminus env:wake -n $SITE_UUID.$TERMINUS_ENV
 
-    # committing updated Wordpress plugins
-    echo -e "\nCommitting Wordpress plugins updates on the ${TERMINUS_ENV} multidev..."
-    terminus env:commit $SITE_UUID.$TERMINUS_ENV --force --message="Updates for the following Wordpress plugins: ${PLUGIN_UPDATES}" --yes
+    # committing updated Drupal modules
+    echo -e "\nCommitting Drupal modules updates on the ${TERMINUS_ENV} multidev..."
+    terminus env:commit $SITE_UUID.$TERMINUS_ENV --force --message="Updates for the following Drupal modules: ${PLUGIN_UPDATES}" --yes
     UPDATES_APPLIED=true
 fi
 
@@ -126,9 +126,9 @@ else
         # # deploy to live
         # echo -e "\nDeploying the updates from test to live..."
         # # php -f bin/slack_notify.php pantheon_deploy live
-        # terminus env:deploy $SITE_UUID.live --cc --note="Auto deploy of Wordpress updates (core, plugins)" --updatedb
+        # terminus env:deploy $SITE_UUID.live --cc --note="Auto deploy of Drupal updates (core, plugins)" --updatedb
 
-        # echo -e "\nVisual regression tests passed! Wordpress updates deployed to live..."
+        # echo -e "\nVisual regression tests passed! Drupal updates deployed to live..."
         # # php -f bin/slack_notify.php wizard_done `find . | grep document_0_desktop | grep test`
     fi
 fi
