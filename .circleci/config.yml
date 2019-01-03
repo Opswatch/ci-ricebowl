@@ -4,7 +4,7 @@ defaults: &defaults
   working_directory: ~/drupal-updates
   environment:
     TZ: "/usr/share/zoneinfo/America/Chicago"
-    TERMINUS_ENV: "ciupdatetest"
+    TERMINUS_ENV: "ci-test"
     SITE_UUID: "opswatchpanth"
 
 version: 2
