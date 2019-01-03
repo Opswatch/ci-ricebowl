@@ -7,22 +7,10 @@
     }
   ],
   "scenarios": [
-    {
-      "label": "Homepage",
-      "url": "https://www.crsricebowl.org/",
-      "referenceUrl": "https://ci-update-crsricebowl.pantheonsite.io/",
-      "hideSelectors": [],
-      "selectors": [
-        "document"
-      ],
-      "readyEvent": null,
-      "delay": 500,
-      "misMatchThreshold" : 0.05
-    },
  {
-      "label": "Recipes",
-      "url": "https://www.crsricebowl.org/recipe",
-      "referenceUrl": "https://ci-update-crsricebowl.pantheonsite.io/recipe",
+      "label": "Homepage",
+      "url": "http://dev-opswatchpanth.pantheonsite.io/",
+      "referenceUrl": "http://dev-opswatchpanth.pantheonsite.io/",
       "hideSelectors": [],
       "selectors": [
         "document"
