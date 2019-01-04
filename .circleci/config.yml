@@ -46,7 +46,7 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - drupalversion
      jobs:
        - updates
 
@@ -56,7 +56,7 @@ workflows:
            filters:
               branches:
                  only:
-                   - master
+                   - drupalversion
 # machine:
 #   timezone:
 #     America/Chicago
