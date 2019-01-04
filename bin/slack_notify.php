@@ -15,7 +15,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 // Load environment variables
 $cli_user = 'hugo@opswatch.ca';
-$environment = "citest";
+$environment = "citest2";
 
 // Load Slack helper functions.
 require_once __DIR__ . '/slack_helper.php';
