@@ -77,7 +77,7 @@ switch($slack_type) {
     $slack_agent = 'BackstopJS Visual Regression';
     $slack_icon = 'https://garris.github.io/BackstopJS/assets/lemurFace.png';
     $slack_color = '#800080';
-    $slack_message = 'Visual regression tests failed! Please review the <https://dashboard.pantheon.io/sites/>' . getenv('SITE_UUID') . '#' . getenv('TERMINUS_ENV') . '/code|the ' . getenv('TERMINUS_ENV') . ' environment>! ' . $response['secure_url'];
+    $slack_message = 'Visual regression tests failed! Please review the <https://dashboard.pantheon.io/sites/' . getenv('SITE_UUID') . '#' . getenv('TERMINUS_ENV') . '/code|the ' . getenv('TERMINUS_ENV') . ' environment>! ' . $response['secure_url'];
     _slack_tell($slack_message, $slack_channel, $slack_agent, $slack_icon, $slack_color);
     break;
 
