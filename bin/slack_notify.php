@@ -84,7 +84,7 @@ switch($slack_type) {
     $slack_agent = 'BackstopJS Visual Regression';
     $slack_icon = 'https://garris.github.io/BackstopJS/assets/lemurFace.png';
     $slack_color = '#800080';
-    $slack_message = 'Kicking off a Visual Regression test using BackstopJS between the "$environment" and `live` environments...';
+    $slack_message = "Kicking off a Visual Regression test using BackstopJS between the $environment and `live` environments...";
     _slack_tell($slack_message, $slack_channel, $slack_agent, $slack_icon, $slack_color);
     break;
 
