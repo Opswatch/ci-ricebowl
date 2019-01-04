@@ -16,6 +16,7 @@ require __DIR__ . '/../vendor/autoload.php';
 // Load environment variables
 $cli_user = 'hugo@opswatch.ca';
 $environment = "citest2";
+$dashboard = 
 
 // Load Slack helper functions.
 require_once __DIR__ . '/slack_helper.php';
@@ -76,7 +77,7 @@ switch($slack_type) {
     $slack_agent = 'BackstopJS Visual Regression';
     $slack_icon = 'https://garris.github.io/BackstopJS/assets/lemurFace.png';
     $slack_color = '#800080';
-    $slack_message = 'Visual regression tests failed! Please review the <https://dashboard.pantheon.io/sites/' . getenv('SITE_UUID') . '#' . getenv('TERMINUS_ENV') . '/code|the ' . getenv('TERMINUS_ENV') . ' environment>! ' . $response['secure_url'];
+    $slack_message = 'Visual regression tests failed! Please review the <https://dashboard.pantheon.io/sites/d62204e7-9012-45c7-9050-0b61ab6de7d9' . getenv('SITE_UUID') . '#' . getenv('TERMINUS_ENV') . '/code|the ' . getenv('TERMINUS_ENV') . ' environment>! ' . $response['secure_url'];
     _slack_tell($slack_message, $slack_channel, $slack_agent, $slack_icon, $slack_color);
     break;
 
