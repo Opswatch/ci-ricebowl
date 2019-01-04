@@ -9,7 +9,7 @@
   "scenarios": [
  {
       "label": "Homepage",
-      "url": "http://dev-opswatchpanth.pantheonsite.io/",
+      "url": "http://userops.me",
       "referenceUrl": "http://dev-opswatchpanth.pantheonsite.io/",
       "hideSelectors": [],
       "selectors": [
