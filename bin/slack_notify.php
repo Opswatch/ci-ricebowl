@@ -33,27 +33,31 @@ switch($slack_type) {
     $slack_message = 'Kicking off checks for updates for Drupal core and contrib modules...';
     _slack_tell( $slack_message, $slack_channel, $slack_agent, $slack_icon, $slack_color);
     break;
-	case 'drupal_no_coreupdates':
+
+  case 'drupal_no_coreupdates':
 		$slack_agent = 'Drupal Update Manager';
 		$slack_icon = '';
 		$slack_color = '#0678BE';
 		$slack_message = array('Drupal core is up to date.');
 		_slack_tell( $slack_message, $slack_channel, $slack_agent, $slack_icon, $slack_color);
 		break;
-	case 'drupal_coreupdates':
+
+  case 'drupal_coreupdates':
 		$slack_agent = 'Drupal Update Manager';
 		$slack_icon = 'http://live-drupalcon-github-magic.pantheonsite.io/sites/default/files/icons/drupal.png';
 		$slack_color = '#0678BE';
 		$slack_message = array('Drupal core has an update *available*: ' . str_replace('Update to ', '', str_replace('\n', '', shell_exec('terminus upstream:updates:list ${SITE_UUID}.${TERMINUS_ENV} --field=message'))));
 		_slack_tell( $slack_message, $slack_channel, $slack_agent, $slack_icon, $slack_color);
 		break;
-	case 'drupal_no_moduleupdates':
+
+  case 'drupal_no_moduleupdates':
 		$slack_agent = 'Drupal Update Manager';
 		$slack_icon = 'http://live-drupalcon-github-magic.pantheonsite.io/sites/default/files/icons/drupal.png';
 		$slack_color = '#0678BE';
 		$slack_message = array('Drupal contrib is up to date.');
 		_slack_tell( $slack_message, $slack_channel, $slack_agent, $slack_icon, $slack_color);
 		break;
+
   case 'drupal_moduleupdates':
     $slack_agent = 'Drupal Update Manager';
     $slack_icon = 'http://live-drupalcon-github-magic.pantheonsite.io/sites/default/files/icons/drupal.png';
@@ -62,6 +66,7 @@ switch($slack_type) {
     $slack_message = array('Drupal contrib has *updates available* for the following modules: ' . $updates);
     _slack_tell( $slack_message, $slack_channel, $slack_agent, $slack_icon, $slack_color);
     break;
+
   case 'visual_same':
     $slack_agent = 'BackstopJS Visual Regression';
     $slack_icon = 'https://garris.github.io/BackstopJS/assets/lemurFace.png';
@@ -69,6 +74,7 @@ switch($slack_type) {
     $slack_message = array('No Visual Differences Detected!');
     _slack_tell( $slack_message, $slack_channel, $slack_agent, $slack_icon, $slack_color); 
     break;
+
   case 'visual_different':
     // Post the File Using Uploads.IM
     $file_name_with_full_path = $argv[2];
