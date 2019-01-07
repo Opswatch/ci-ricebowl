@@ -151,7 +151,7 @@ switch($slack_type) {
     _slack_tell( $slack_message, $slack_channel, $slack_agent, $slack_icon, $slack_color);
     $slack_message = array();
     $slack_message['Operation'] = 'terminus multidev:create';
-    $slack_message['Environment'] = $environment;
+    $slack_message['Environment'] = `$environment`;
     _slack_tell( $slack_message, $slack_channel, $slack_agent, $slack_icon, $slack_color);
     break;
 
