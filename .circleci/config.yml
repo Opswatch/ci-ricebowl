@@ -5,7 +5,7 @@ defaults: &defaults
   environment:
     TZ: "/usr/share/zoneinfo/America/Chicago"
     TERMINUS_ENV: "ci-test"
-    SITE_UUID: "opswatchpanth"
+    SITE_UUID: "opswatchwordpress"
 
 version: 2
 jobs:

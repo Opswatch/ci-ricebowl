@@ -9,8 +9,8 @@
   "scenarios": [
  {
       "label": "Homepage",
-      "url": "http://dev-opswatchpanth.pantheonsite.io/",
-      "referenceUrl": "http://dev-opswatchpanth.pantheonsite.io/",
+      "url": "http://dev-opswatchwordpress.pantheonsite.io/",
+      "referenceUrl": "http://dev-opswatchwordpress.pantheonsite.io/",
       "hideSelectors": [],
       "selectors": [
         "document"
