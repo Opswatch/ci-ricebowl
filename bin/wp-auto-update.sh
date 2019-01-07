@@ -48,6 +48,7 @@ terminus env:wake -n $SITE_UUID.$TERMINUS_ENV
 
 # check for Wordpress plugin updates
 echo -e "\nChecking for Wordpress plugin updates on the ${TERMINUS_ENV} multidev..."
+terminus wp $SITE_UUID.$TERMINUS_ENV -- plugin update --dry_run --all
 PLUGIN_UPDATES="$(terminus wp $SITE_UUID.$TERMINUS_ENV -- plugin update --dry-run --all --format=summary)"
 
 if [[ ${PLUGIN_UPDATES} == "No plugin updates available." ]]
