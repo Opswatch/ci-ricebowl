@@ -17,6 +17,10 @@ jobs:
                 keys:
                     - composer-cache
                     - terminus-install
+            
+            - run:
+                name: slack notify
+                command: php -f bin/slack_notify.php circle_start "${CIRCLE_BUILD_NUM}"
 
             - run:
                 name: dependencies
