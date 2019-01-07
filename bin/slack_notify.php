@@ -177,7 +177,7 @@ switch($slack_type) {
     $slack_agent = 'Drupal Update Wizard';
     $slack_icon = '';
     $slack_color = '#666666';
-    $slack_message = 'No new updates are found. Have a good day - http://framera.com/wp-content/uploads/2017/04/Have-a-Good-Day.jpg';
+    $slack_message = 'No new updates are found. Have a good day - https://media.giphy.com/media/OojQx4M3zYUOk/giphy.gif';
     _slack_tell( $slack_message, $slack_channel, $slack_agent, $slack_icon, $slack_color);
     break;
 
