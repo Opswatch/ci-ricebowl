@@ -18,6 +18,10 @@ jobs:
                     - composer-cache
                     - terminus-install
 
+            - run: 
+                name: Slack notify
+                command: php -f bin/slack_notify.php circle_start "${CIRCLE_BUILD_NUM}"
+
             - run:
                 name: dependencies
                 command: ./bin/set-up-globals.sh
