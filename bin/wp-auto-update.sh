@@ -48,8 +48,8 @@ terminus env:wake -n $SITE_UUID.$TERMINUS_ENV
 
 # check for Drupal module updates
 echo -e "\nChecking for Drupal module updates on the ${TERMINUS_ENV} multidev..."
-terminus drush $SITE_UUID.$TERMINUS_ENV -- pm-updatestatus
-PLUGIN_UPDATES="$(terminus drush $SITE_UUID.$TERMINUS_ENV -- pm-updatestatus --format=list | grep -v ok)"
+terminus drush $SITE_UUID.$TERMINUS_ENV --pm-updatestatus
+PLUGIN_UPDATES="$(terminus drush $SITE_UUID.$TERMINUS_ENV --pm-updatestatus --format=list | grep -v ok)"
 
 if [[ ${PLUGIN_UPDATES} == "No module updates available." ]]
 then
